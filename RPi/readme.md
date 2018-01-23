@@ -5,7 +5,9 @@ Uses the pynrf24 library, https://github.com/jpbarraca/pynrf24
 See the transmit.py for more information on pinout etc.
 
 Example of output:
-python transmit.py
+
+```
+$ python transmit.py
 STATUS          = 0x0e RX_DR=0 TX_DS=0 MAX_RT=0 RX_P_NO=7 TX_FULL=0
 RX_ADDR_P0-1    = 0xd2f0f0f0f0 0xe1f0f0f0f0
 RX_ADDR_P2-5    = 0xc3 0xc4 0xc5 0xc6
@@ -42,6 +44,7 @@ PA Power        = PA_MAX
 > PONG06
 < PING08 OK
 > PONG07
+```
 
 As can be seen, there is no PONG reply for the first packet (PING00),
 since when that is received, the PONG is written to the buffer.
