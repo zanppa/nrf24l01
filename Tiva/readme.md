@@ -28,14 +28,14 @@ The library uses the hardware SPI (SSI) so the possible pins are limited.
 
 ### Compiling
 The program is built using the [Energia IDE](https://energia.nu/), but since I dislike the built-in 
-libraries and initializations and whatnot, I override the ```main``` and ```init``` functions and 
+libraries and initializations and whatnot, I override the ```main``` and ```_init``` functions and 
 as a result small changes are needed in the Energia installation.
 
-In the default main C/Cpp file, ```init``` and ```main``` functions need to be weakened by adding
+In the default main C/Cpp file, ```_init``` and ```main``` functions need to be weakened by adding
 ```__attribute__((weak))```
 before the function names, i.e. in 
 ```..\Energia15\packages\energia\hardware\tivac\1.0.3\cores\tivac\main.cpp```
-change the ```init``` and ```main``` to following function definitions:
+change the ```_init``` and ```main``` to following function definitions:
 ```
 void __attribute__((weak)) _init(void)
 int __attribute__((weak)) main(void)
