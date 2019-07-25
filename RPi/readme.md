@@ -1,11 +1,12 @@
 Raspberry PI zero W software to test nRF24L01 communication.
 
-Uses the pynrf24 library, https://github.com/jpbarraca/pynrf24
+Uses the [pynrf24 library](https://github.com/jpbarraca/pynrf24).
 
-See the transmit.py for more information on pinout etc.
+This program sends a ```PINGx``` message, where ```x``` is the message number, 
+periodically over the air, prints the transmission status (OK/failed) and also 
+prints any auto-ack reply messages if they are received.
 
-Example of output:
-
+Example of output when used together with the TI Tiva program is below.
 ```
 $ python transmit.py
 STATUS          = 0x0e RX_DR=0 TX_DS=0 MAX_RT=0 RX_P_NO=7 TX_FULL=0
@@ -50,3 +51,19 @@ As can be seen, there is no PONG reply for the first packet (PING00),
 since when that is received, the PONG is written to the buffer.
 When next packet arrives (PING01) the PONG00 message in the transmit
 buffer is automatically sent back.
+
+
+### Connections
+Connections between the Raspberry PI and the nrf24L01 module are according to following list (I used Raspberry PI Zero W)
+```
+nrf24L01   RPI
+=====================================
+3V3        pin 1
+GND        pin 6
+MOSI       BCM 10, pin 19, SPI0_MOSI
+MISO       BCM 9, pin 21, SPI0_MISO
+CLK        BCM 11, pin 23, SPI0_SCLK
+CSN        BCM 8, pin 24, SPI0_CE0
+CE         BCM 25, pin 22
+IRQ        BCM 16, not in use
+```
